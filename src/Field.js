@@ -7,30 +7,30 @@ class Field extends Component {
         let column=[]
         let theRow
         let firstRow=[]
-        firstRow.push(<td><NotSquare/></td>)
+        firstRow.push(<td key="td_not1"><NotSquare key="not1"/></td>)
         for(let frc=0;frc<col;frc++){
-            firstRow.push(<td><DeleteColSquare id={`dc${frc}`} cn={col} mod={this.props.mod}/></td>)
+            firstRow.push(<td key={`td_dc${frc}`}><DeleteColSquare key={`dc${frc}`} id={`dc${frc}`} cn={col} mod={this.props.mod}/></td>)
         }        
-        column.push(<tr>{firstRow}</tr>)
+        column.push(<tr key={`firstRow`}>{firstRow}</tr>)
         for(let r=0;r<row;r++){
             theRow=[]
-            theRow.push(<td><DeleteRowSquare id={`dr${r}`} rn={row} mod={this.props.mod}/></td>)
+            theRow.push(<td key={`td_dr${r}`}><DeleteRowSquare key={`dr${r}`} id={`dr${r}`} rn={row} mod={this.props.mod}/></td>)
             for(let c=0;c<col;c++){
-                theRow.push(<td><Square  row={r} col={c} /></td>)
+                theRow.push(<td key={`td_${r}x${c}`}><Square  row={r} col={c} key={`${r}x${c}`} /></td>)
 
             }
             if(r===0){
-                theRow.push(<td><NewRowSquare mod={this.props.mod}/></td>)
+                theRow.push(<td key="td_newRow"><NewRowSquare key="newRow" mod={this.props.mod}/></td>)
             }
-            column.push(<tr >{theRow}</tr>)
+            column.push(<tr key={`r${r}`}>{theRow}</tr>)
         }
 
-        column.push(<tr><td><NotSquare/></td><td><NewColSquare  mod={this.props.mod}/></td></tr>)
+        column.push(<tr key="lastRow"><td key="td_not2"><NotSquare key="not2"/></td><td key="td_newCol"><NewColSquare  mod={this.props.mod} key="newCol"/></td></tr>)
 
 
         return (
-        <table >
-            <tbody>{column}</tbody>
+        <table key="table">
+            <tbody key="tbody">{column}</tbody>
         </table>
         )
     }
