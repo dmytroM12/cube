@@ -8,8 +8,8 @@ export class Square extends Component{
     
 }
 toggler=()=>{
-        let r=document.getElementById(`dr${this.props.row}`)
-        let c=document.getElementById(`dc${this.props.col}`)
+        let r=document.querySelector(`#dr${this.props.row}`)
+        let c=document.querySelector(`#dc${this.props.col}`)
         r.classList.toggle('red')
         c.classList.toggle('red')
 
