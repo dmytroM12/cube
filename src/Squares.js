@@ -8,17 +8,17 @@ export class Square extends Component{
     
 }
 appear=()=>{
-        let r=document.querySelector(`#dr${this.props.row}`)
-        let c=document.querySelector(`#dc${this.props.col}`)
-        r.classList.add('red')
-        c.classList.add('red')
+        let delRow=document.querySelector(`#dr${this.props.row}`)
+        let delCol=document.querySelector(`#dc${this.props.col}`)
+        delRow.classList.add('red')
+        delCol.classList.add('red')
 
     }
 disappear=()=>{
-        let r=document.querySelector(`#dr${this.props.row}`)
-        let c=document.querySelector(`#dc${this.props.col}`)
-        r.classList.remove('red')
-        c.classList.remove('red')
+        let delRow=document.querySelector(`#dr${this.props.row}`)
+        let delCol=document.querySelector(`#dc${this.props.col}`)
+        delRow.classList.remove('red')
+        delCol.classList.remove('red')
     
     }
 
@@ -58,18 +58,18 @@ export class DeleteRowSquare extends Component{
         )
     }
     delRow=()=>{
-        if(this.props.rn>1){
+        if(this.props.rowNum>1){
             this.props.mod(-1,0);
         }
     }
     appear=()=>{
-        let e=document.querySelector("#"+this.props.id)
-        e.classList.add('red')
+        let self=document.querySelector("#"+this.props.id)
+        self.classList.add('red')
 
     }
     disappear=()=>{
-        let e=document.querySelector("#"+this.props.id)
-        e.classList.remove('red')
+        let self=document.querySelector("#"+this.props.id)
+        self.classList.remove('red')
     }
 }
 
@@ -80,17 +80,17 @@ export class DeleteColSquare extends Component{
         )
     }
     delCol=()=>{
-        if(this.props.cn>1){
+        if(this.props.colNum>1){
             this.props.mod(0,-1);
         }
     }
     appear=()=>{
-        let e=document.querySelector("#"+this.props.id)
-        e.classList.add('red')
+        let self=document.querySelector("#"+this.props.id)
+        self.classList.add('red')
 
     }
     disappear=()=>{
-        let e=document.querySelector("#"+this.props.id)
-        e.classList.remove('red')
+        let self=document.querySelector("#"+this.props.id)
+        self.classList.remove('red')
     }
 }
