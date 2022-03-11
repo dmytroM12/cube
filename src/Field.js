@@ -1,37 +1,27 @@
 import React, {Component} from 'react'
-import {Square,NewColSquare,NewRowSquare,DeleteColSquare,DeleteRowSquare,NotSquare} from './Squares'
-
+import {Square,NewColSquare,NewRowSquare,DeleteColSquare,DeleteRowSquare,NotSquare} from './squares/Squares'
 class Field extends Component {
-    render(){
-        const {row,col}=this.props
-        let column=[]
-        let theRow
-        let firstRow=[]
-        firstRow.push(<td key="td_not1"><NotSquare key="not1"/></td>)
-        for(let frc=0;frc<col;frc++){
-            firstRow.push(<td key={`td_dc${frc}`}><DeleteColSquare key={`dc${frc}`} id={`dc${frc}`} colNum={col} mod={this.props.mod}/></td>)
-        }        
-        column.push(<tr key={`firstRow`}>{firstRow}</tr>)
-        for(let r=0;r<row;r++){
-            theRow=[]
-            theRow.push(<td key={`td_dr${r}`}><DeleteRowSquare key={`dr${r}`} id={`dr${r}`} rowNum={row} mod={this.props.mod}/></td>)
-            for(let c=0;c<col;c++){
-                theRow.push(<td key={`td_${r}x${c}`}><Square  row={r} col={c} key={`${r}x${c}`} /></td>)
-
+    state={
+        arr:[]
+    }
+    componentWillMount(){
+        let gridArr=[]
+        for(let theRow=0;theRow<4;theRow++){
+            gridArr.push([])
+            for(let theCol=0;theCol<4;theCol++){
+                gridArr[theRow].push({row:theRow, col:theCol})
             }
-            if(r===0){
-                theRow.push(<td key="td_newRow"><NewRowSquare key="newRow" mod={this.props.mod}/></td>)
-            }
-            column.push(<tr key={`r${r}`}>{theRow}</tr>)
         }
-
-        column.push(<tr key="lastRow"><td key="td_not2"><NotSquare key="not2"/></td><td key="td_newCol"><NewColSquare  mod={this.props.mod} key="newCol"/></td></tr>)
-
-
+        this.setState({arr:gridArr})
+    }
+    render(){
+        let gridArr=this.state.arr
+        let TheGrid=gridArr.map(theRow=> theRow.map(el=><div class='box-blue' style={{gridRow:el.row, gridColumn:el.col}}row={el.row} col={el.col} key={`${el.row}x${el.col}`}></div>))
+        console.log(TheGrid)
         return (
-        <table key="table">
-            <tbody key="tbody">{column}</tbody>
-        </table>
+        <div class="grid-container" key="gridContainer">
+            <TheGrid key="theGrid"/>
+        </div>
         )
     }
 }

@@ -7,7 +7,9 @@
     font-size: xx-large;
     clear: both;
   }
-  
+  .grid-container {
+    display: inline-grid;
+  }
   .red {
     background-color: red;
   }
