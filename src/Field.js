@@ -16,8 +16,7 @@ class Field extends Component {
     }
     render(){
         let gridArr=this.state.arr
-        let TheGrid=gridArr.map(theRow=> theRow.map(el=><div class='box-blue' style={{gridRow:el.row, gridColumn:el.col}}row={el.row} col={el.col} key={`${el.row}x${el.col}`}></div>))
-        console.log(TheGrid)
+        let TheGrid=gridArr.map(theRow=> theRow.map(el=><Square row={el.row} col={el.col} key={`${el.row}x${el.col}`}/>))
         return (
         <div class="grid-container" key="gridContainer">
             <TheGrid key="theGrid"/>
