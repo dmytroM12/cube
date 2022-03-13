@@ -3,10 +3,7 @@ import React, {Component} from 'react'
 export class NewRowSquare extends Component{
     render(){
         return(
-            <btn className='box orange' onClick={this.addRow}>+</btn>
+            <button className='box newrow' onClick={this.props.plusRow}>+</button>
         )
-    }
-    addRow=()=>{
-        this.props.mod(1,0);
     }
 }

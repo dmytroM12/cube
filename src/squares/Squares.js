@@ -1,6 +1,4 @@
 
-
-export { NotSquare } from './NotSquare'
 export { Square } from './Square'
 export {NewRowSquare} from './NewRowSquare'
 

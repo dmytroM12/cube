@@ -4,10 +4,7 @@ import React, {Component} from 'react'
 export class NewColSquare extends Component{
     render(){
         return(
-            <btn className='box orange' onClick={this.addCol}>+</btn>
+            <button className='box newcol' onClick={this.props.plusColumn}>+</button>
         )
-    }
-    addCol=()=>{
-        this.props.mod(0,1);
     }
 }
