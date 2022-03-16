@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { NotSquare } from './squares/NotSquare'
 import {Square,NewColSquare,NewRowSquare,DeleteColSquare,DeleteRowSquare} from './squares/Squares'
 class Field extends Component {
     state={
@@ -6,7 +7,7 @@ class Field extends Component {
         rows:5,
         columns:5
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         let gridArr=[]
         for(let theRow=1;theRow<=this.state.rows;theRow++){
             gridArr.push([])
@@ -18,10 +19,11 @@ class Field extends Component {
     }
     render(){
         return (
-        <div className='outer-grid' key='outerGrid'>
-            <DeleteColSquare key='delCol' minusColumn={this.minusColumn}/>
+        <div className='outer-grid' key='outerGrid'  onMouseLeave={this.hideThem}>
+            <NotSquare key="notSquare"/>
+            <DeleteColSquare key='delCol'  minusColumn={this.minusColumn}/>
             <DeleteRowSquare key='delRow' minusRow={this.minusRow}/>
-            <div className="grid-container" key="gridContainer">
+            <div className="grid-container" key="gridContainer"onMouseEnter={this.showThem}>
                 {this.state.arr.map((row, rowIndex) => (
                     <div className="grid-container-row" key={rowIndex}>
                         {row.map((el) => (
@@ -41,7 +43,6 @@ class Field extends Component {
         let theArr=this.state.arr.map((theRow,rowIndex)=>[...theRow,{row:rowIndex+1,col: colNum}])
         this.setState({arr:theArr, columns:colNum})
         
-        console.log(this.state)
     }
     
     plusRow=()=>{
@@ -61,6 +62,7 @@ class Field extends Component {
             let theArr=this.state.arr.map(row=>row.filter(el=>el.col<colNum))
             colNum--
             this.setState({columns:colNum,arr:theArr})
+            this.resetThem();
         }
     }
     minusRow=()=>{
@@ -68,7 +70,28 @@ class Field extends Component {
             let rowNum=this.state.rows-1
             let theArr=this.state.arr.slice(0,rowNum)
             this.setState({rows:rowNum,arr:theArr})
+            this.resetThem();
         }
+    }
+    showThem(){
+        const delCol=document.getElementById('delCol');
+        const delRow=document.getElementById('delRow');
+        delCol.style.display="block";
+        delRow.style.display="block"; 
+    }
+    hideThem(){
+        const delCol=document.getElementById('delCol');
+        const delRow=document.getElementById('delRow');
+        delCol.style.display="none";
+        delRow.style.display="none"; 
+    }
+    resetThem(){
+        const delCol=document.getElementById('delCol');
+        const delRow=document.getElementById('delRow');
+        delCol.style.display="none";
+        delRow.style.display="none"; 
+        delCol.style.left=`0px`;
+        delRow.style.top=`0px`;
     }
 
 }

@@ -26,11 +26,13 @@
     column-gap: 5px;
   }
   .delcol {
+    position: relative;
     background-color: red;
     grid-column: 2;
     grid-row: 1;
   }
   .delrow {
+    position: relative;
     background-color: red;
     grid-column: 1;
     grid-row: 2;
@@ -49,4 +51,8 @@
   
   .blue {
     background-color: blue;
+  }
+  .not{
+    grid-column:1;
+    grid-row:1;
   }
