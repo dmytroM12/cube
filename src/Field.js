@@ -2,20 +2,16 @@ import React, {Component} from 'react'
 import { NotSquare } from './squares/NotSquare'
 import {Square,NewColSquare,NewRowSquare,DeleteColSquare,DeleteRowSquare} from './squares/Squares'
 class Field extends Component {
-    state={
-        arr:[],
-        rows:5,
-        columns:5
-    }
-    UNSAFE_componentWillMount(){
+    constructor(){
+        super()
         let gridArr=[]
-        for(let theRow=1;theRow<=this.state.rows;theRow++){
+        for(let theRow=1;theRow<=5;theRow++){
             gridArr.push([])
-            for(let theCol=1;theCol<=this.state.columns;theCol++){
+            for(let theCol=1;theCol<=5;theCol++){
                 gridArr[theRow-1].push({row:theRow, col:theCol})
             }
         }
-        this.setState({arr:gridArr})
+        this.state={arr:gridArr,rows:5,columns:5}
     }
     render(){
         return (
