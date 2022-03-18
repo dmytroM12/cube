@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { NotSquare } from './squares/NotSquare'
-import {Square,NewColSquare,NewRowSquare,DeleteColSquare,DeleteRowSquare} from './squares/Squares'
+import {Square,Button, NotSquare} from './squares/Squares'
 class Field extends Component {
     constructor(){
         super()
@@ -17,8 +16,8 @@ class Field extends Component {
         return (
         <div className='outer-grid' key='outerGrid'  onMouseLeave={this.hideThem}>
             <NotSquare key="notSquare"/>
-            <DeleteColSquare key='delCol'  minusColumn={this.minusColumn}/>
-            <DeleteRowSquare key='delRow' minusRow={this.minusRow}/>
+            <Button key='delCol' type='delCol' text='-' action={this.minusColumn} style={{display:"none"}} />
+            <Button key='delRow' type='delRow' text="-" action={this.minusRow} style={{display:"none"}}/>
             <div className="grid-container" key="gridContainer"onMouseEnter={this.showThem}>
                 {this.state.arr.map((row, rowIndex) => (
                     <div className="grid-container-row" key={rowIndex}>
@@ -28,8 +27,8 @@ class Field extends Component {
                     </div>
                 ))}
             </div>
-            <NewColSquare key='newCol' plusColumn={this.plusColumn}/>
-            <NewRowSquare key='newRow' plusRow={this.plusRow}/>
+            <Button key='newCol' type='newCol' text='+' action={this.plusColumn} style={{display:"block"}}/>
+            <Button key='newRow' type='newRow' text='+' action={this.plusRow} style={{display:"block"}}/>
             
         </div>
         );

@@ -1,9 +1,5 @@
+import { findByPlaceholderText } from '@testing-library/react'
 
 export { Square } from './Square'
-export {NewRowSquare} from './NewRowSquare'
-
-
-export {NewColSquare} from './NewColSquare'
-export {DeleteRowSquare} from './DeleteRowSquare' 
-
-export {DeleteColSquare} from './DeleteColSquare'
+export {Button} from './Button'
+export {NotSquare} from './NotSquare'
